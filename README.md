@@ -13,12 +13,17 @@ This project aims to develop a script that monitors the health of a Linux system
 
 ## Getting Started
 
-To use this system health monitoring script, follow these steps:
+To use this system health monitoring script locally, follow these steps:
 
 1. Clone the repository to your local machine.
 2. Install the required dependencies using `pip install Flask psutil`.
 3. Run the Flask application using `python app.py`.
 4. Open your web browser and navigate to [http://127.0.0.1:5000](http://127.0.0.1:5000) to access the system health monitoring dashboard.
+
+## Deployment
+
+This project is deployed on PythonAnywhere. You can access the live version of the system health monitoring application at the following URL:
+[https://anilmanal001.pythonanywhere.com/](https://anilmanal001.pythonanywhere.com/)
 
 ## Project Structure
 
