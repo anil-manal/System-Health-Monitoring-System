@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Health Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #007bff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .percentage-cell {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .percentage-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 0;
+            background-color: #7fdcf7; /* default background color for percentage cells */
+            transition: width 0.5s ease-in-out;
+        }
+
+       
+        .alerts {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffe6e6; /* light red */
+            border: 1px solid #ffadad; /* red */
+            border-radius: 5px;
+            color: #ff3333; /* dark red */
+        }
+
+        .back-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-button a {
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>System Health Information</h1>
+
+        <!-- Display alerts if they exist -->
+        {% if alerts %}
+        <div class="alerts">
+            <ul>
+                {% for alert in alerts %}
+                <li>{{ alert }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <table>
+            <tr>
+                <th>Category</th>
+                <th>Usage</th>
+            </tr>
+            <tr>
+                <td>CPU</td>
+                <td class="percentage-cell percentage-{{ cpu_usage }}">
+                    <div class="percentage-bar"></div>
+                    {{ cpu_usage }}%
+                </td>
+            </tr>
+            <tr>
+                <td>Memory</td>
+                <td class="percentage-cell percentage-{{ memory_usage }}">
+                    <div class="percentage-bar"></div>
+                    {{ memory_usage }}%
+                </td>
+            </tr>
+            <tr>
+                <td>Disk</td>
+                <td class="percentage-cell percentage-{{ disk_usage }}">
+                    <div class="percentage-bar"></div>
+                    {{ disk_usage }}%
+                </td>
+            </tr>
+        </table>
+
+        <div class="back-button">
+            <a href="/">Back</a>
+        </div>
+    </div>
+</body>
+</html>
